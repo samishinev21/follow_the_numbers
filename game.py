@@ -1,7 +1,6 @@
 from pgzero.screen import Screen
 import pgzrun
 from random import randint
-
 import pygame
 
 WIDTH = 800
@@ -14,7 +13,6 @@ next_dot = 0
 
 def draw():
     pass
-
 
 def on_key_down(key):
     if key == keys.F:

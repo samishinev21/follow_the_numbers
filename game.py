@@ -12,8 +12,13 @@ lines = []
 next_dot = 0
 
 def draw():
-    for d in dots:
-        d.draw()
+    screen.clear()
+    screen.fill((8, 40, 0))
+    number = 1
+    for dot in dots:
+        dot.draw()
+        screen.draw.text(str(number), center=(dot.x, dot.y), color='black')
+        number += 1
 
 def create_points():
     for i in range(0, 10):
@@ -21,6 +26,9 @@ def create_points():
         y = randint(10, HEIGHT - 10)
         dot = Actor('dot', (x, y))
         dots.append(dot)
+
+def on_mouse_down():
+    screen.fill((8, 40, 0))
 
 def on_key_down(key):
     if key == keys.F:

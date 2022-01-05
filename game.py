@@ -19,6 +19,8 @@ def draw():
         dot.draw()
         screen.draw.text(str(number), center=(dot.x, dot.y), color='black')
         number += 1
+    for line in lines:
+        screen.draw.line(line[0], line[1], (0, 0, 0))
 
 def create_points():
     for i in range(0, 10):
@@ -27,8 +29,13 @@ def create_points():
         dot = Actor('dot', (x, y))
         dots.append(dot)
 
-def on_mouse_down():
+def on_mouse_down(pos):
+    global next_dot
     screen.fill((8, 40, 0))
+    if dots[next_dot].collidepoint(pos):
+        if next_dot != 0:
+            lines.append((dots[next_dot - 1].pos, dots[next_dot].pos))
+        next_dot += 1
 
 def on_key_down(key):
     if key == keys.F:
